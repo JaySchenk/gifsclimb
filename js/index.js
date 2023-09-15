@@ -1,88 +1,51 @@
-const canvas = document.querySelector('canvas')
-const context = canvas.getContext('2d')
-canvas.width = 1024
-canvas.height = 576
-const gravity = 0.5
+const player = document.getElementById('player');
+const gravity = 0.5;
+const jumpStrength = -15;
 
-class Player {
-    constructor(position) {
-        this.position = position
-        this.velocity = {
-            x: 0,
-            y: 1,
-        }
-        this.height = 100;
-    }
-    draw() {
-        context.fillStyle = 'red'
-        context.fillRect(this.position.x, this.position.y, 100, this.height)
-    }
+let playerPositionY = 300;
+let playerVelocityY = 0;
+let isJumping = false;
 
-    update() {
-        this.draw()
-        this.position.x += this.velocity.x
-        this.position.y += this.velocity.y
-        if (this.position.y + this.height + this.velocity.y < canvas.height) {
-            this.velocity.y += gravity
-        } else {
-            this.velocity.y = 0
-        }
+function updatePlayer() {
+    player.style.top = playerPositionY + 'px';
+}
+
+function applyGravity() {
+    if (playerPositionY < 300) {
+        playerVelocityY += gravity;
+    } else {
+        playerVelocityY = 0;
+        playerPositionY = 300;
+        isJumping = false;
     }
 }
 
-const player = new Player({
-    x: 100,
-    y: 300,
-})
-
-const keys = {
-    d: {
-        pressed: false,
-    },
-    a: {
-        pressed: false,
-    },
-}
-
-function animate() {
-    window.requestAnimationFrame(animate)
-    context.fillStyle = 'white';
-    context.fillRect(0, 0, canvas.width, canvas.height)
-    player.update()
-
-    player.velocity.x = 0
-    if (keys.d.pressed) {
-        player.velocity.x = 5
-    } else if (keys.a.pressed) {
-        player.velocity.x = -5
+function jump() {
+    if (!isJumping) {
+        playerVelocityY = jumpStrength;
+        isJumping = true;
     }
 }
 
-animate()
-
-window.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'd':
-            keys.d.pressed = true
-            break
+            player.style.left = (parseInt(player.style.left) || 0) + 5 + 'px';
+            break;
         case 'a':
-            keys.a.pressed = true
-            break
+            player.style.left = (parseInt(player.style.left) || 0) - 5 + 'px';
+            break;
         case 'w':
-            player.velocity.y = -15
-            break
+            jump();
+            break;
     }
-})
+});
 
-window.addEventListener('keyup', (event) => {
-    switch (event.key) {
-        case 'd':
-            keys.d.pressed = false
-            break
-        case 'a':
-            keys.a.pressed = false
-            break
-        case 'w':
-            break
-    }
-})
+function gameLoop() {
+    applyGravity();
+    playerPositionY += playerVelocityY;
+    updatePlayer();
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();

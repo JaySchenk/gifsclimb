@@ -1,10 +1,13 @@
 body {
-    background: black;
     margin: 0;
-    /* Remove default margin */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* Make the body take up the full viewport height */
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+#player {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
 }
