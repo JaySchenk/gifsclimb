@@ -1,6 +1,5 @@
 const canvas = document.querySelector('canvas')
 const context = canvas.getContext('2d')
-
 canvas.width = 1024
 canvas.height = 576
 const gravity = 0.5
@@ -28,13 +27,12 @@ class Player {
         } else {
             this.velocity.y = 0
         }
-
     }
 }
 
 const player = new Player({
-    x: 0,
-    y: 0,
+    x: 100,
+    y: 300,
 })
 
 const keys = {

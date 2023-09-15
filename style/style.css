@@ -1,0 +1,10 @@
+body {
+    background: black;
+    margin: 0;
+    /* Remove default margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Make the body take up the full viewport height */
+}
