@@ -1,17 +1,21 @@
 class Player {
-  constructor(gameScreen, left, top, height, width, imagePaths, animationInterval) {
+  constructor(gameScreen, left, top, height, width, idlePaths, runPaths, animationInterval) {
     this.gameScreen = gameScreen;
     this.left = left;
     this.top = top;
     this.height = height;
     this.width = width;
     this.directionX = 0;
-    this.imagePaths = imagePaths;
+    this.directionY = 0;
+    this.verticalVelocity = 0;
+    this.idlePaths = idlePaths;
+    this.runPaths = runPaths;
     this.currentImageIndex = 0;
-    this.animationInterval = animationInterval; // Pass animation interval as a parameter
+    this.animationInterval = animationInterval;
+    this.isFacingRight = true;
 
     this.element = new Image();
-    this.element.src = this.imagePaths[this.currentImageIndex];
+    this.element.src = this.idlePaths[this.currentImageIndex];
 
     this.element.style.position = 'absolute';
     this.element.style.left = `${this.left}px`;
@@ -21,7 +25,6 @@ class Player {
 
     this.gameScreen.appendChild(this.element);
 
-    // Set up the idle animation
     this.setupIdleAnimation();
   }
 
@@ -35,17 +38,41 @@ class Player {
       this.lastAnimationTime = timestamp;
     }
 
-    if (timestamp - this.lastAnimationTime >= this.animationInterval) {
+    const timeElapsed = timestamp - this.lastAnimationTime;
+    const framesToSkip = Math.floor(timeElapsed / this.animationInterval);
+
+    if (framesToSkip > 0) {
       this.lastAnimationTime = timestamp;
 
-      // Change the character image
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.imagePaths.length;
-      this.element.src = this.imagePaths[this.currentImageIndex];
+      if (this.directionX > 0) {
+        this.isFacingRight = true;
+      } else if (this.directionX < 0) {
+        this.isFacingRight = false;
+      }
+
+      if (this.isFacingRight) {
+        this.element.style.transform = 'scaleX(1)';
+      } else {
+        this.element.style.transform = 'scaleX(-1)';
+      }
+
+      for (let i = 0; i < framesToSkip; i++) {
+        if (this.directionX !== 0) {
+          this.currentImageIndex++;
+        }
+      }
+
+      if (this.directionX !== 0) {
+        this.element.src = this.runPaths[this.currentImageIndex % this.runPaths.length];
+      } else {
+        this.element.src = this.idlePaths[this.currentImageIndex % this.idlePaths.length];
+      }
     }
 
-    // Request the next frame
     requestAnimationFrame((timestamp) => this.animate(timestamp));
   }
+
+
 
   move() {
     this.updatePosition();
@@ -60,6 +87,14 @@ class Player {
       this.left = this.gameScreen.clientWidth - 50 - this.width;
     } else {
       this.left += this.directionX;
+    }
+
+    if (this.top < 20) {
+      this.top = 20;
+    } else if (this.top > this.gameScreen.clientHeight - 20 - this.height) {
+      this.top = this.gameScreen.clientHeight - 20 - this.height;
+    } else {
+      this.top += this.directionY;
     }
   }
 }
