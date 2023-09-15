@@ -1,50 +1,50 @@
 window.addEventListener('load', () => {
-  const startButton = document.getElementById('start-button')
-  const restartButton = document.getElementById('restart-button')
+  const startButton = document.getElementById('start-button');
+  const restartButton = document.getElementById('restart-button');
 
-  let game
+  let game;
+  let isMovingLeft = false;
+  let isMovingRight = false;
 
   function startGame() {
-    console.log('start game')
-    game = new Game()
-    game.start()
+    console.log('start game');
+    game = new Game();
+    game.start();
   }
 
   startButton.addEventListener('click', function () {
-    startGame()
-  })
+    startGame();
+  });
 
   restartButton.addEventListener('click', function () {
-    game.player.element.remove()
-    startGame()
-  })
+    game.player.element.remove();
+    startGame();
+  });
 
   document.addEventListener('keydown', event => {
-    console.log('down', event)
     if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
-      game.player.directionX = -1
+      isMovingLeft = true;
+      isMovingRight = false; // Reset the right movement flag
     } else if (event.code === 'KeyD' || event.code === 'ArrowRight') {
-      game.player.directionX = 1
+      isMovingRight = true;
+      isMovingLeft = false; // Reset the left movement flag
     }
-    if (event.code === 'KeyW') {
-      game.player.directionY = -1
-    } else if (event.code === 'KeyS') {
-      game.player.directionY = 1
+
+    // Set the player's direction based on the flags
+    if (isMovingLeft) {
+      game.player.directionX = -2.5;
+    } else if (isMovingRight) {
+      game.player.directionX = 2.5;
     }
-  })
+  });
 
   document.addEventListener('keyup', event => {
-    console.log('up', event)
-    if (
-      event.code === 'KeyA' ||
-      event.code === 'KeyD' ||
-      event.code === 'ArrowLeft' ||
-      event.code === 'ArrowRight'
-    ) {
-      game.player.directionX = 0
+    if ((event.code === 'KeyA' || event.code === 'ArrowLeft') && !isMovingRight) {
+      isMovingLeft = false;
+      game.player.directionX = 0;
+    } else if ((event.code === 'KeyD' || event.code === 'ArrowRight') && !isMovingLeft) {
+      isMovingRight = false;
+      game.player.directionX = 0;
     }
-    if (event.code === 'KeyW' || event.code === 'KeyS') {
-      game.player.directionY = 0
-    }
-  })
-})
+  });
+});
