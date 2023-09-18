@@ -1,0 +1,174 @@
+body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+#game-intro {
+  padding: 20px 0px;
+}
+
+#game-container {
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../img/road.png);
+  background-size: cover;
+  animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0 -1000px;
+  }
+
+  95% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 50px;
+  }
+}
+
+#game-end {
+  display: none;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+.animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.idle-animation {
+  width: 200px;
+  height: 145px;
+  background-image: url('../img/idle_0.png');
+  animation: animateIdle 1s steps(4) infinite;
+
+}
+
+@keyframes animateIdle {
+  0% {
+    background-image: url('../img/idle_0.png');
+  }
+
+  25% {
+    background-image: url('../img/idle_1.png');
+  }
+
+  50% {
+    background-image: url('../img/idle_2.png');
+  }
+
+  75% {
+    background-image: url('../img/idle_3.png');
+  }
+}
+
+
+.run-animation {
+  width: 200px;
+  height: 145px;
+  background-image: url('../img/run_0.png');
+  animation: animateRun 1s steps(6) infinite;
+}
+
+@keyframes animateRun {
+  0% {
+    background-image: url('../img/run_0.png');
+  }
+
+  16.66% {
+    background-image: url('../img/run_1.png');
+  }
+
+  33.33% {
+    background-image: url('../img/run_2.png');
+  }
+
+  50% {
+    background-image: url('../img/run_3.png');
+  }
+
+  66.66% {
+    background-image: url('../img/run_4.png');
+  }
+
+  83.33% {
+    background-image: url('../img/run_5.png');
+  }
+}
+
+.run-animation-mirrored {
+  width: 200px;
+  height: 145px;
+  background-image: url('../img/run_0.png');
+  animation: animateRunMirrored 1s steps(6) infinite;
+  transform: scaleX(-1);
+
+}
+
+@keyframes animateRunMirrored {
+  0% {
+    background-image: url('../img/run_0.png');
+  }
+
+  16.66% {
+    background-image: url('../img/run_1.png');
+  }
+
+  33.33% {
+    background-image: url('../img/run_2.png');
+  }
+
+  50% {
+    background-image: url('../img/run_3.png');
+  }
+
+  66.66% {
+    background-image: url('../img/run_4.png');
+  }
+
+  83.33% {
+    background-image: url('../img/run_5.png');
+  }
+}
