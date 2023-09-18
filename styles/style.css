@@ -79,8 +79,6 @@ body button {
 
 
 .idle-animation {
-  width: 200px;
-  height: 145px;
   background-image: url('../img/idle_0.png');
   animation: animateIdle 1s steps(4) infinite;
 
@@ -106,8 +104,6 @@ body button {
 
 
 .run-animation {
-  width: 200px;
-  height: 145px;
   background-image: url('../img/run_0.png');
   animation: animateRun 1s steps(6) infinite;
 }
@@ -139,8 +135,6 @@ body button {
 }
 
 .run-animation-mirrored {
-  width: 200px;
-  height: 145px;
   background-image: url('../img/run_0.png');
   animation: animateRunMirrored 1s steps(6) infinite;
   transform: scaleX(-1);

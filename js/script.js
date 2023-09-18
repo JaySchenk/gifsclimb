@@ -23,9 +23,11 @@ window.addEventListener('load', () => {
     switch (event.key) {
       case 'd':
         game.player.velocity.x = game.player.moveSpeed;
+        game.playerfaceLeft = false;
         break;
       case 'a':
         game.player.velocity.x = -game.player.moveSpeed;
+        game.playerfaceLeft = true;
         break;
       case 'w':
         if (game.player.velocity.y === 0) {

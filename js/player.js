@@ -14,6 +14,7 @@ class Player {
     this.element.style.height = `${this.height}px`
     this.element.style.width = `${this.width}px`
 
+    this.faceLeft = false;
     this.gravity = 0.5;
     this.jumpStrength = 15;
     this.moveSpeed = 5;
