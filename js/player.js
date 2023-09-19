@@ -7,7 +7,7 @@ class Player {
     this.width = width
 
     this.element = document.createElement('img')
-    this.element.src = '../img/hitbox.png'
+    this.element.src = '/img/hitbox.png'
 
     this.element.style.position = 'absolute'
     this.element.style.left = `${this.left}px`
