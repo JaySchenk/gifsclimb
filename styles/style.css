@@ -68,7 +68,6 @@ body button {
   margin-bottom: 20px;
 }
 
-
 .animation-container {
   position: absolute;
   top: 0;
@@ -77,6 +76,13 @@ body button {
   flex-direction: column;
 }
 
+/* Remove border for all animations */
+.idle-animation,
+.idle-animation-mirrored,
+.run-animation,
+.run-animation-mirrored {
+  border: none;
+}
 
 .idle-animation {
   background-image: url('../img/idle_0.png');
@@ -190,4 +196,12 @@ body button {
   83.33% {
     background-image: url('../img/run_5.png');
   }
+}
+
+.hitbox {
+  width: 90px;
+  height: 70px;
+  background-color: transparent;
+  /* Optional: You can also set the border to none to ensure no border is displayed */
+  border: none;
 }
