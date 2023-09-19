@@ -30,20 +30,17 @@ class Game {
     const currentTime = Date.now();
     const deltaTime = (currentTime - this.lastUpdateTime) / 1000; // Convert to seconds
 
-    // Check if enough time has passed (e.g., 1 second) to update the game
+    // Check if 1 second has passed
     if (deltaTime >= 1) {
-
       // Decrement the timer by one second
       this.timer--;
-
-      // Update the timer display
+      // Update timer display
       document.getElementById('score').innerText = this.timer;
-
-      // Update the last update time
+      // Update last update time
       this.lastUpdateTime = currentTime;
     }
 
-    // Check if the timer has reached zero
+
     if (this.timer <= 0) {
       this.gameOver = true;
     }
