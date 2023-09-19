@@ -8,7 +8,8 @@ class Game {
     this.player = new Player(this.gameScreen, 230, 550, 73, 100)
     this.obstacles = []
     this.animateId = 0
-    this.score = 0
+    this.timer = 300
+    this.lastUpdateTime = 0;
     this.lives = 3
     this.gameOver = false
   }
@@ -26,19 +27,36 @@ class Game {
 
   gameLoop() {
     this.update()
+    const currentTime = Date.now();
+    const deltaTime = (currentTime - this.lastUpdateTime) / 1000; // Convert to seconds
 
-    document.getElementById('score').innerText = this.score
-    document.getElementById('lives').innerText = this.lives
+    // Check if enough time has passed (e.g., 1 second) to update the game
+    if (deltaTime >= 1) {
+
+      // Decrement the timer by one second
+      this.timer--;
+
+      // Update the timer display
+      document.getElementById('score').innerText = this.timer;
+
+      // Update the last update time
+      this.lastUpdateTime = currentTime;
+    }
+
+    // Check if the timer has reached zero
+    if (this.timer <= 0) {
+      this.gameOver = true;
+    }
 
     if (this.lives < 1) {
-      this.gameOver = true
+      this.gameOver = true;
     }
 
     if (this.gameOver) {
-      this.gameScreen.style.display = 'none'
-      this.gameEndScreen.style.display = 'block'
+      this.gameScreen.style.display = 'none';
+      this.gameEndScreen.style.display = 'block';
     } else {
-      this.animateId = requestAnimationFrame(() => this.gameLoop())
+      requestAnimationFrame(() => this.gameLoop());
     }
   }
 
