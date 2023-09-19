@@ -7,7 +7,8 @@ class Player {
     this.width = width
 
     this.element = document.createElement('img')
-    this.element.src = './img/car.png'
+    this.element.src = ''
+
     this.element.style.position = 'absolute'
     this.element.style.left = `${this.left}px`
     this.element.style.top = `${this.top}px`
@@ -36,6 +37,25 @@ class Player {
 
     this.element.style.left = this.position.x + 'px';
     this.element.style.top = this.position.y + 'px';
+    if (this.velocity.x === 0 && this.velocity.y === 0) {
+      // Player is not moving
+      if (this.faceLeft) {
+        this.element.className = '';
+        this.element.classList.add('idle-animation-mirrored');
+      } else {
+        this.element.className = '';
+        this.element.classList.add('idle-animation');
+      }
+    } else {
+      // Player is moving
+      if (this.faceLeft) {
+        this.element.className = '';
+        this.element.classList.add('run-animation-mirrored');
+      } else {
+        this.element.className = '';
+        this.element.classList.add('run-animation');
+      }
+    }
 
   }
 

@@ -5,7 +5,7 @@ class Game {
     this.gameEndScreen = document.getElementById('game-end')
     this.height = 800
     this.width = 1280
-    this.player = new Player(this.gameScreen, 230, 550, 80, 40)
+    this.player = new Player(this.gameScreen, 230, 550, 73, 100)
     this.obstacles = []
     this.animateId = 0
     this.score = 0
