@@ -17,11 +17,11 @@ class Player {
 
     this.faceLeft = false;
     this.gravity = 0.5;
-    this.jumpStrength = 15;
+    this.jumpStrength = 10;
     this.moveSpeed = 5;
     this.position = {
-      x: 400,
-      y: 250,
+      x: 40,
+      y: 550,
     };
     this.velocity = {
       x: 0,

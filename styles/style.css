@@ -18,12 +18,12 @@ body {
 #game-screen {
   display: none;
   align-content: center;
-  padding: 20px 0px;
+  padding: 0px 0px;
   overflow: hidden;
   position: relative;
-  background-image: url(../img/road.png);
-  background-size: cover;
-  animation: slide 5s linear infinite;
+  background-image: url(../img/testmap.png);
+
+
 }
 
 @keyframes slide {
