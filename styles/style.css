@@ -79,31 +79,31 @@ body button {
 
 
 .idle-animation {
-  background-image: url('/img/idle_0.png');
+  background-image: url('../img/idle_0.png');
   animation: animateIdle 1s steps(4) infinite;
   background-size: 100px 73px;
 }
 
 @keyframes animateIdle {
   0% {
-    background-image: url('/img/idle_0.png');
+    background-image: url('../img/idle_0.png');
   }
 
   25% {
-    background-image: url('/img/idle_1.png');
+    background-image: url('../img/idle_1.png');
   }
 
   50% {
-    background-image: url('/img/idle_2.png');
+    background-image: url('../img/idle_2.png');
   }
 
   75% {
-    background-image: url('/img/idle_3.png');
+    background-image: url('../img/idle_3.png');
   }
 }
 
 .idle-animation-mirrored {
-  background-image: url('/img/idle_0.png');
+  background-image: url('../img/idle_0.png');
   animation: animateIdleMirrored 1s steps(4) infinite;
   transform: scaleX(-1);
   background-size: 100px 73px;
@@ -111,56 +111,56 @@ body button {
 
 @keyframes animateIdleMirrored {
   0% {
-    background-image: url('/img/idle_0.png');
+    background-image: url('../img/idle_0.png');
   }
 
   25% {
-    background-image: url('/img/idle_1.png');
+    background-image: url('../img/idle_1.png');
   }
 
   50% {
-    background-image: url('/img/idle_2.png');
+    background-image: url('../img/idle_2.png');
   }
 
   75% {
-    background-image: url('/img/idle_3.png');
+    background-image: url('../img/idle_3.png');
   }
 }
 
 .run-animation {
-  background-image: url('/img/run_0.png');
+  background-image: url('../img/run_0.png');
   animation: animateRun 1s steps(6) infinite;
   background-size: 100px 73px;
 }
 
 @keyframes animateRun {
   0% {
-    background-image: url('/img/run_0.png');
+    background-image: url('../img/run_0.png');
   }
 
   16.66% {
-    background-image: url('/img/run_1.png');
+    background-image: url('../img/run_1.png');
   }
 
   33.33% {
-    background-image: url('/img/run_2.png');
+    background-image: url('../img/run_2.png');
   }
 
   50% {
-    background-image: url('/img/run_3.png');
+    background-image: url('../img/run_3.png');
   }
 
   66.66% {
-    background-image: url('/img/run_4.png');
+    background-image: url('../img/run_4.png');
   }
 
   83.33% {
-    background-image: url('/img/run_5.png');
+    background-image: url('../img/run_5.png');
   }
 }
 
 .run-animation-mirrored {
-  background-image: url('/img/run_0.png');
+  background-image: url('../img/run_0.png');
   animation: animateRunMirrored 1s steps(6) infinite;
   transform: scaleX(-1);
   background-size: 100px 73px;
@@ -168,26 +168,26 @@ body button {
 
 @keyframes animateRunMirrored {
   0% {
-    background-image: url('/img/run_0.png');
+    background-image: url('../img/run_0.png');
   }
 
   16.66% {
-    background-image: url('/img/run_1.png');
+    background-image: url('../img/run_1.png');
   }
 
   33.33% {
-    background-image: url('/img/run_2.png');
+    background-image: url('../img/run_2.png');
   }
 
   50% {
-    background-image: url('/img/run_3.png');
+    background-image: url('../img/run_3.png');
   }
 
   66.66% {
-    background-image: url('/img/run_4.png');
+    background-image: url('../img/run_4.png');
   }
 
   83.33% {
-    background-image: url('/img/run_5.png');
+    background-image: url('../img/run_5.png');
   }
 }
