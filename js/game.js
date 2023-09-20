@@ -5,13 +5,15 @@ class Game {
     this.gameEndScreen = document.getElementById('game-end')
     this.height = 800
     this.width = 1280
-    this.player = new Player(this.gameScreen, 230, 550, 73, 100)
+
     this.obstacles = []
     this.animateId = 0
     this.timer = 300
     this.lastUpdateTime = 0;
     this.lives = 3
     this.gameOver = false
+
+    this.colissionBlocks = [];
   }
 
   start() {
@@ -22,6 +24,7 @@ class Game {
     this.gameScreen.style.height = `${this.height}px`
     this.gameScreen.style.width = `${this.width}px`
     this.createCollisionBlocks();
+    this.player = new Player(this.gameScreen, 230, 550, 73, 100, this.colissionBlocks)
     this.gameLoop()
   }
 
@@ -68,12 +71,12 @@ class Game {
       floorCollision2d.push(floorCollision.slice(i, i + 80));
     }
 
-    const colissionBlocks = [];
+    this.colissionBlocks = [];
     floorCollision2d.forEach((row, y) => {
       row.forEach((symbol, x) => {
         if (symbol === 429) {
           console.log('draw a block here');
-          colissionBlocks.push(new colissionSprite(this.gameScreen, {
+          this.colissionBlocks.push(new colissionSprite(this.gameScreen, {
             x: x * 16,
             y: y * 16
           }));

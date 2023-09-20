@@ -1,5 +1,5 @@
 class Player {
-  constructor(gameScreen, left, top, height, width) {
+  constructor(gameScreen, left, top, height, width, colissionBlocks) {
     this.gameScreen = gameScreen
     this.left = left
     this.top = top
@@ -21,13 +21,13 @@ class Player {
     this.moveSpeed = 5;
     this.position = {
       x: 40,
-      y: 550,
+      y: 250,
     };
     this.velocity = {
       x: 0,
       y: 0,
     };
-
+    this.collisionBlocks = colissionBlocks
 
     this.gameScreen.appendChild(this.element)
   }
@@ -58,10 +58,40 @@ class Player {
     }
 
   }
+  /*
+  applyGravity() {
+    this.position.y += this.velocity.y
+    this.velocity.y += this.gravity
+  }
+  checkForVertCol() {
+    for (let i = 0; i < this.collisionBlocks.length; i++) {
+      const collisionBlock = this.collisionBlocks[i]
+
+      if (
+        collision({
+          object1: this.hitbox,
+          object2: collisionBlock,
+        })
+      ) {
+        if (this.velocity.y > 0) {
+          this.velocity.y = 0
+          this.position.y = collisionBlock.position.y - this.height - 0.01
+          break
+        }
+        if (this.velocity.y < 0) {
+          this.velocity.y = 0
+          this.position.y = collisionBlock.position.y + this.height + 0.01
+          break
+        }
+      }
+    }
+  }
+*/
 
   updatePosition() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+
     // Check the left boundary
     if (this.position.x < 0) {
       this.position.x = 0;
