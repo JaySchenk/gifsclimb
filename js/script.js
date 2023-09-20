@@ -1,3 +1,17 @@
+const floorCollision2d = [];
+for (let i = 0; i < floorCollision.length; i += 80) {
+  floorCollision2d.push(floorCollision.slice(i, i + 80))
+
+}
+floorCollision2d.forEach((row) => {
+  row.forEach((symbol) => {
+    if (symbol === 429) {
+      console.log('draw a block here')
+    }
+  });
+});
+
+
 window.addEventListener('load', () => {
   const startButton = document.getElementById('start-button')
   const restartButton = document.getElementById('restart-button')
