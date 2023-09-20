@@ -21,7 +21,7 @@ class Game {
 
     this.gameScreen.style.height = `${this.height}px`
     this.gameScreen.style.width = `${this.width}px`
-
+    this.createCollisionBlocks();
     this.gameLoop()
   }
 
@@ -61,4 +61,25 @@ class Game {
     this.player.move()
 
   }
+
+  createCollisionBlocks() {
+    const floorCollision2d = [];
+    for (let i = 0; i < floorCollision.length; i += 80) {
+      floorCollision2d.push(floorCollision.slice(i, i + 80));
+    }
+
+    const colissionBlocks = [];
+    floorCollision2d.forEach((row, y) => {
+      row.forEach((symbol, x) => {
+        if (symbol === 429) {
+          console.log('draw a block here');
+          colissionBlocks.push(new colissionSprite(this.gameScreen, {
+            x: x * 16,
+            y: y * 16
+          }));
+        }
+      });
+    });
+  }
 }
+
