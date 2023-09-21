@@ -2,6 +2,8 @@ class colissionSprite {
     constructor(gameScreen, position) {
         this.gameScreen = gameScreen
         this.position = position
+        this.height = 16;
+        this.width = 16;
 
         this.element = document.createElement('img')
         this.element.src = './img/collisionBlock.png'

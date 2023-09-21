@@ -5,7 +5,6 @@ window.addEventListener('load', () => {
   let game
 
   function startGame() {
-    console.log('start game')
     game = new Game()
     game.start()
   }
@@ -30,15 +29,14 @@ window.addEventListener('load', () => {
         game.player.faceLeft = true;
         break;
       case 'w':
-        if (game.player.velocity.y === 0) {
-          game.player.velocity.y = -game.player.jumpStrength;
-          break;
-        }
+
+        game.player.velocity.y = -game.player.jumpStrength;
+        break;
+
     }
   })
 
   document.addEventListener('keyup', event => {
-    console.log('up', event)
     if (
       event.code === 'KeyA' ||
       event.code === 'KeyD' ||
@@ -51,3 +49,4 @@ window.addEventListener('load', () => {
     }
   })
 })
+
