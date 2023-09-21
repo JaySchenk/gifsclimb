@@ -126,6 +126,9 @@ class Player {
   applyGravity() {
     this.position.y += this.velocity.y
     this.velocity.y += this.gravity
+    if (this.velocity.y >= 1) {
+      this.isJumping = true
+    }
   }
   checkForVertCol() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
