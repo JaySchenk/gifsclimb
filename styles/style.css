@@ -1,7 +1,36 @@
+@font-face {
+  font-family: '04B_03__';
+  /* This should match the font file name without the file extension */
+  src: url('04B_03__.TTF') format('truetype');
+  /* Provide the path to your font file */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  background-color: #9d9d9d;
   padding: 0;
   margin: 0;
   text-align: center;
+  font-family: '04B_03__', sans-serif;
+}
+
+#timer {
+  /* Add #timer to apply the font to the timer element */
+  font-family: '04B_03__', sans-serif;
+}
+
+body,
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: '04B_03__', sans-serif;
 }
 
 #game-intro {
@@ -22,7 +51,7 @@ body {
   overflow: hidden;
   position: relative;
   background-image: url(../img/testmap.png);
-
+  border: 4px solid black;
 
 }
 

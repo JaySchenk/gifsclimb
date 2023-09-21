@@ -19,6 +19,17 @@ class Game {
     this.lives = 3
     this.gameOver = false
     this.colissionBlocks = [];
+    this.timerElement = document.createElement('div');
+    this.timerElement.id = 'timer';
+    this.timerElement.style.position = 'absolute';
+    this.timerElement.style.left = '10px';
+    this.timerElement.style.top = '10px';
+    this.timerElement.style.color = 'black'; // Change the text color to black
+    this.timerElement.classList.add('04B_03__'); // Apply the 04b_03 font class
+    this.timerElement.style.fontSize = '24px'; // Set the font size
+    this.timerElement.style.zIndex = '1000'; // Set the z-index to make sure it's above other elements
+    this.gameScreen.appendChild(this.timerElement);
+
 
   }
 
@@ -30,21 +41,22 @@ class Game {
     this.gameScreen.style.height = `${this.height}px`
     this.gameScreen.style.width = `${this.width}px`
     this.createCollisionBlocks();
-    this.player = new Player(this.gameScreen, 40, 550, 60, 70, this.colissionBlocks)
+    this.player = new Player(this.gameScreen, 20, 550, 60, 70, this.colissionBlocks)
     this.gameLoop()
   }
 
   gameLoop() {
-    this.update()
+    this.update();
     const currentTime = Date.now();
     const deltaTime = (currentTime - this.lastUpdateTime) / 1000; // Convert to seconds
     // Check if 1 second has passed
     if (deltaTime >= 1) {
       this.timer--;
-      document.getElementById('score').innerText = this.timer;
       this.lastUpdateTime = currentTime;
     }
 
+    // Update the timer element's text content
+    this.timerElement.innerText = `Remaining time: ${this.timer}`;
 
     if (this.timer <= 0) {
       this.gameOver = true;

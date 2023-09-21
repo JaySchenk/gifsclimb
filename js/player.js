@@ -18,8 +18,8 @@ class Player {
     this.moveSpeed = 5;
     this.isJumping = false;
     this.position = {
-      x: 40,
-      y: 250,
+      x: 20,
+      y: 550,
     };
     this.velocity = {
       x: 0,
@@ -29,8 +29,8 @@ class Player {
     this.gameScreen.appendChild(this.element)
     this.hitbox = {
       position: {
-        x: 40,
-        y: 250
+        x: 20,
+        y: 550
       },
       width: 28,
       height: 32,
