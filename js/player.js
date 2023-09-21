@@ -107,14 +107,14 @@ class Player {
       ) {
         if (this.velocity.x > 0) {
           console.log(`detectededge`)
-          this.velocity.x = 0
+          //this.velocity.x = -this.velocity.x;
           const offset = this.hitbox.position.x - this.position.x + this.hitbox.width
           this.position.x = collisionBlock.position.x - offset - 0.01;
           break
         }
         if (this.velocity.x < 0) {
           console.log(`detectededge2`)
-          this.velocity.x = 0
+          //this.velocity.x = -this.velocity.x;
           const offset = this.hitbox.position.x - this.position.x
           this.position.x = collisionBlock.position.x + collisionBlock.width - offset + 0.01;
           break

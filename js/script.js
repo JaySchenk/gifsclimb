@@ -18,34 +18,49 @@ window.addEventListener('load', () => {
     startGame()
   })
 
+  let isLeftPressed = false;
+  let isRightPressed = false;
+
   document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-      case 'd':
-        game.player.velocity.x = game.player.moveSpeed;
-        game.player.faceLeft = false;
-        break;
-      case 'a':
+    switch (event.code) {
+      case 'KeyA':
+      case 'ArrowLeft':
+        isLeftPressed = true;
         game.player.velocity.x = -game.player.moveSpeed;
         game.player.faceLeft = true;
         break;
-      case "w":
+      case 'KeyD':
+      case 'ArrowRight':
+        isRightPressed = true;
+        game.player.velocity.x = game.player.moveSpeed;
+        game.player.faceLeft = false;
+        break;
+      case 'KeyW':
         game.player.startJumping();
         break;
+    }
+  });
 
+  document.addEventListener('keyup', (event) => {
+    switch (event.code) {
+      case 'KeyA':
+      case 'ArrowLeft':
+        isLeftPressed = false;
+        if (!isRightPressed) {
+          game.player.velocity.x = 0;
+        }
+        break;
+      case 'KeyD':
+      case 'ArrowRight':
+        isRightPressed = false;
+        if (!isLeftPressed) {
+          game.player.velocity.x = 0;
+        }
+        break;
+      case 'KeyW':
+        // Handle keyup for 'W' if needed
+        break;
     }
-  })
-
-  document.addEventListener('keyup', event => {
-    if (
-      event.code === 'KeyA' ||
-      event.code === 'KeyD' ||
-      event.code === 'ArrowLeft' ||
-      event.code === 'ArrowRight'
-    ) {
-      game.player.velocity.x = 0
-    }
-    if (event.code === 'KeyW' || event.code === 'KeyS') {
-    }
-  })
+  });
 })
 
