@@ -28,9 +28,8 @@ window.addEventListener('load', () => {
         game.player.velocity.x = -game.player.moveSpeed;
         game.player.faceLeft = true;
         break;
-      case 'w':
-
-        game.player.velocity.y = -game.player.jumpStrength;
+      case "w":
+        game.player.startJumping();
         break;
 
     }

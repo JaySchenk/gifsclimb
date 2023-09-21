@@ -16,6 +16,7 @@ class Player {
     this.gravity = 0.5;
     this.jumpStrength = 10;
     this.moveSpeed = 5;
+    this.isJumping = false;
     this.position = {
       x: 40,
       y: 250,
@@ -88,7 +89,12 @@ class Player {
     this.hitboxElement.style.top = `${this.position.y + 28}px`; // Position it based on player's position
 
   }
+  startJumping() {
+    if (this.isJumping) return;
 
+    this.velocity.y = -this.jumpStrength;
+    this.isJumping = true;
+  }
   checkForHortCol() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i]
@@ -133,6 +139,7 @@ class Player {
       ) {
 
         if (this.velocity.y > 0) {
+          this.isJumping = false;
           this.velocity.y = 0
           const offset = this.hitbox.position.y - this.position.y + this.hitbox.height
           this.position.y = collisionBlock.position.y - offset - 0.01
@@ -140,6 +147,7 @@ class Player {
         }
 
         if (this.velocity.y < 0) {
+
           this.velocity.y = 0
           const offset = this.hitbox.position.y - this.position.y
           this.position.y = collisionBlock.position.y + collisionBlock.height - offset + 0.01;
