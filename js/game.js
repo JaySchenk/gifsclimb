@@ -1,3 +1,10 @@
+/*
+width 80 blocks
+
+height 50 blocks
+
+16/16 blocks */
+
 class Game {
   constructor() {
     this.startScreen = document.getElementById('game-intro')
@@ -5,14 +12,12 @@ class Game {
     this.gameEndScreen = document.getElementById('game-end')
     this.height = 800
     this.width = 1280
-
     this.obstacles = []
     this.animateId = 0
     this.timer = 300
     this.lastUpdateTime = 0;
     this.lives = 3
     this.gameOver = false
-
     this.colissionBlocks = [];
   }
 
@@ -32,14 +37,10 @@ class Game {
     this.update()
     const currentTime = Date.now();
     const deltaTime = (currentTime - this.lastUpdateTime) / 1000; // Convert to seconds
-
     // Check if 1 second has passed
     if (deltaTime >= 1) {
-      // Decrement the timer by one second
       this.timer--;
-      // Update timer display
       document.getElementById('score').innerText = this.timer;
-      // Update last update time
       this.lastUpdateTime = currentTime;
     }
 
@@ -62,7 +63,6 @@ class Game {
 
   update() {
     this.player.move()
-
   }
 
   createCollisionBlocks() {

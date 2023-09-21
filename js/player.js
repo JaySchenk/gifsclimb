@@ -33,8 +33,10 @@ class Player {
   }
 
   move() {
-    this.updatePosition()
-
+    this.updatePosition() // or this.position.x += this.velocity.x;
+    // this.checkForHortCol()
+    // this.applyGravity()
+    // this.checkForVertCol()
     this.element.style.left = this.position.x + 'px';
     this.element.style.top = this.position.y + 'px';
     if (this.velocity.x === 0 && this.velocity.y === 0) {
@@ -59,6 +61,31 @@ class Player {
 
   }
   /*
+
+checkForHortCol() {
+    for (let i = 0; i < this.collisionBlocks.length; i++) {
+      const collisionBlock = this.collisionBlocks[i]
+
+      if (
+        collision({
+          object1: this.position,
+          object2: collisionBlock,
+        })
+      ) {
+        if (this.velocity.x > 0) {
+          this.velocity.x = 0
+          this.position.x = collisionBlock.position.x - this.width - 0.01
+          break
+        }
+        if (this.velocity.x < 0) {
+          this.velocity.x = 0
+          this.position.x = collisionBlock.position.x + this.width + 0.01
+          break
+        }
+      }
+    }
+  }
+
   applyGravity() {
     this.position.y += this.velocity.y
     this.velocity.y += this.gravity
@@ -69,7 +96,7 @@ class Player {
 
       if (
         collision({
-          object1: this.hitbox,
+          object1: this.position,
           object2: collisionBlock,
         })
       ) {
