@@ -1,9 +1,3 @@
-/*
-width 80 blocks
-
-height 50 blocks
-
-16/16 blocks */
 
 class Game {
   constructor() {
@@ -67,9 +61,153 @@ class Game {
       this.gameEndScreen.style.display = 'block';
 
     } if (this.player.canMove === false) {
-      console.log('cannotmove')
+      console.log('cannotmove');
       this.player.element.className = '';
       this.player.element.classList.add('idle-animation');
+
+      const images = [
+        {
+          src: './img/ninja1.png',
+          x: 780,
+          y: 80,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/mat1.png',
+          x: 713,
+          y: 5,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/ninja2.png',
+          x: 830,
+          y: 45,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/mat2.png',
+          x: 680,
+          y: 15,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/ninja3.png',
+          x: 740,
+          y: 50,
+          scale: 0.3,
+          duration: 4000, // 4 seconds
+        },
+        {
+          src: './img/mat4.png',
+          x: 916,
+          y: 85,
+          scale: 0.3,
+        },
+      ];
+
+      const displayImagesSequentially = (index) => {
+        if (index >= images.length) {
+          return;
+        }
+
+        const imageConfig = images[index];
+        const image = document.createElement('img');
+        image.src = imageConfig.src;
+        image.style.position = 'absolute';
+        image.style.left = `${imageConfig.x}px`;
+        image.style.top = `${imageConfig.y}px`;
+        image.style.transform = `scale(${imageConfig.scale})`;
+
+        this.gameScreen.appendChild(image);
+        setTimeout(() => {
+          this.gameScreen.removeChild(image);
+          displayImagesSequentially(index + 1);
+        }, imageConfig.duration);
+      };
+      displayImagesSequentially(0);
+    }
+
+    if (this.player.canMove === false) {
+      console.log('cannotmove');
+      this.player.element.className = '';
+      this.player.element.classList.add('idle-animation');
+
+
+      const images = [
+        {
+          src: './img/ninja1.png',
+          x: 780,
+          y: 80,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/mat1.png',
+          x: 713,
+          y: 5,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/ninja2.png',
+          x: 830,
+          y: 45,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/mat2.png',
+          x: 680,
+          y: 15,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/ninja3.png',
+          x: 740,
+          y: 50,
+          scale: 0.3,
+          duration: 4000, // 4 seconds
+        },
+        {
+          src: './img/mat3.png',
+          x: 740,
+          y: 15,
+          scale: 0.3,
+          duration: 3000, // 3 seconds
+        },
+        {
+          src: './img/mat4.png',
+          x: 670,
+          y: 10,
+          scale: 0.3,
+          duration: 3000,
+        },
+      ];
+      const displayImagesSequentially = (index) => {
+        if (index >= images.length) {
+          return;
+        }
+
+        const imageConfig = images[index];
+        const image = document.createElement('img');
+        image.src = imageConfig.src;
+        image.style.position = 'absolute';
+        image.style.left = `${imageConfig.x}px`;
+        image.style.top = `${imageConfig.y}px`;
+        image.style.transform = `scale(${imageConfig.scale})`;
+
+        this.gameScreen.appendChild(image);
+        setTimeout(() => {
+          this.gameScreen.removeChild(image);
+          displayImagesSequentially(index + 1);
+        }, imageConfig.duration);
+      };
+      displayImagesSequentially(0);
     }
 
 

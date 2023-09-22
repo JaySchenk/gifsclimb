@@ -89,9 +89,6 @@ class Player {
         }
       }
     }
-
-
-
   }
   updateHitbox() {
     this.hitbox.position.x = this.position.x + 25

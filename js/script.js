@@ -38,6 +38,14 @@ window.addEventListener('load', () => {
       case 'KeyW':
         game.player.startJumping();
         break;
+      case 'KeyP':
+        if (isLeftPressed) {
+          game.player.position.x = 1050;
+          game.player.position.y = 180;
+          game.player.element.style.left = '1050px';
+          game.player.element.style.top = '180px';
+        }
+        break;
     }
   });
 
