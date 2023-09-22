@@ -8,7 +8,7 @@ MVP(DOM)
 
 Backlog
 
-    <s>Walking and idle animations.</s>
+    Walking and idle animations. - finished
     Add win condition animations.
     Add sound.
     Add other jump logic.
