@@ -42,7 +42,7 @@ class Player {
     this.hitboxElement.style.top = `${this.hitbox.position.y}px`; // Position it based on player's position
     this.hitboxElement.style.height = `32px`;
     this.hitboxElement.style.width = `28px`;
-
+    this.canMove = true;
 
     this.gameScreen.appendChild(this.hitboxElement);
     console.log(this.height, this.width)
@@ -50,36 +50,47 @@ class Player {
   }
 
   move() {
-    this.position.x += this.velocity.x;
-    this.element.style.left = this.position.x + 'px';
-    this.element.style.top = this.position.y + 'px';
-    this.updateHitbox()
-    this.checkForHortCol()
-
-    this.applyGravity()
-    this.updateHitbox()
-
-    this.checkForVertCol()
-
-    if (this.velocity.x === 0 /*&& this.velocity.y === 0*/) {
-      // Player is not moving
-      if (this.faceLeft) {
-        this.element.className = '';
-        this.element.classList.add('idle-animation-mirrored');
-      } else {
-        this.element.className = '';
-        this.element.classList.add('idle-animation');
-      }
+    if (this.position.x > 1000 && this.position.x < 1200 && this.position.y > 140 && this.position.y < 230) {
+      this.canMove = false;
+      this.velocity.x = 0;
+      this.velocity.y = 0;
+      return;
     } else {
-      // Player is moving
-      if (this.faceLeft) {
-        this.element.className = '';
-        this.element.classList.add('run-animation-mirrored');
+
+
+      this.position.x += this.velocity.x;
+      this.element.style.left = this.position.x + 'px';
+      this.element.style.top = this.position.y + 'px';
+      this.updateHitbox()
+      this.checkForHortCol()
+
+      this.applyGravity()
+      this.updateHitbox()
+
+      this.checkForVertCol()
+
+      if (this.velocity.x === 0 /*&& this.velocity.y === 0*/) {
+        // Player is not moving
+        if (this.faceLeft) {
+          this.element.className = '';
+          this.element.classList.add('idle-animation-mirrored');
+        } else {
+          this.element.className = '';
+          this.element.classList.add('idle-animation');
+        }
       } else {
-        this.element.className = '';
-        this.element.classList.add('run-animation');
+        // Player is moving
+        if (this.faceLeft) {
+          this.element.className = '';
+          this.element.classList.add('run-animation-mirrored');
+        } else {
+          this.element.className = '';
+          this.element.classList.add('run-animation');
+        }
       }
     }
+
+
 
   }
   updateHitbox() {

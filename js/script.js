@@ -14,12 +14,12 @@ window.addEventListener('load', () => {
   })
 
   restartButton.addEventListener('click', function () {
-    game.player.element.remove()
-    startGame()
+    location.reload()
   })
 
   let isLeftPressed = false;
   let isRightPressed = false;
+
 
   document.addEventListener('keydown', (event) => {
     switch (event.code) {

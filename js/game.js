@@ -24,10 +24,10 @@ class Game {
     this.timerElement.style.position = 'absolute';
     this.timerElement.style.left = '10px';
     this.timerElement.style.top = '10px';
-    this.timerElement.style.color = 'black'; // Change the text color to black
-    this.timerElement.classList.add('04B_03__'); // Apply the 04b_03 font class
-    this.timerElement.style.fontSize = '24px'; // Set the font size
-    this.timerElement.style.zIndex = '1000'; // Set the z-index to make sure it's above other elements
+    this.timerElement.style.color = 'black';
+    this.timerElement.classList.add('04B_03__');
+    this.timerElement.style.fontSize = '24px';
+    this.timerElement.style.zIndex = '1000';
     this.gameScreen.appendChild(this.timerElement);
 
 
@@ -65,7 +65,15 @@ class Game {
     if (this.gameOver) {
       this.gameScreen.style.display = 'none';
       this.gameEndScreen.style.display = 'block';
-    } else {
+
+    } if (this.player.canMove === false) {
+      console.log('cannotmove')
+      this.player.element.className = '';
+      this.player.element.classList.add('idle-animation');
+    }
+
+
+    else {
       requestAnimationFrame(() => this.gameLoop());
     }
   }
