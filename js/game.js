@@ -111,8 +111,15 @@ class Game {
 
       const displayImagesSequentially = (index) => {
         if (index >= images.length) {
+          setTimeout(() => {
+            this.gameOver = true;
+            this.gameScreen.style.display = 'none';
+            this.gameEndScreen.style.display = 'block';
+          }, 7000); // 7 seconds in milliseconds
+
           return;
         }
+
 
         const imageConfig = images[index];
         const image = document.createElement('img');
