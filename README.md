@@ -1,5 +1,7 @@
 Gifs adventure is a platforming game where you control little Gif. He's on a journey to the secret temple of pronounciation where master Mat holds all the wisdom in regards to pronounciation. It's up to you to navigate Gif trough the dangerous terrain! But time is not on your side, reach the temple before the time runs out...
 
+Link to the game: jayschenk.github.io/gifsclimb/
+
 MVP(DOM)
 
     Game has one ninja you need to control trough the terrain.
